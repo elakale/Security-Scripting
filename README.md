@@ -1,0 +1,1 @@
+These are 3 separate smaller semester projects that I worked on during my Summer 2023 semester. This course was focused on utilizing scripting languages to create scripts that could be used for security assessments, data analysis (data manipulation;  textual manipulation), and automating administrative security tasks.
