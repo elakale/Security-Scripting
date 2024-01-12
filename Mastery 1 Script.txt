@@ -1,0 +1,247 @@
+#!/bin/bash
+# Function to display the header
+header() {
+ clear
+ echo "First Name: $1"
+ echo "Last Name: $2"
+ echo "Class and Section: ITSY1375-7P1"
+ echo "Assessment: ITSY 1375 - Module 1 Assessment Lab"
+ echo "Current Date and Time: $(date)"
+ echo
+}
+
+# Function to get user's first and last name
+get_name() {
+ read -p "Enter your FirstName: " first_name
+ read -p "Enter your Lastname: " last_name
+}
+
+#Main program function
+main() {
+ get_name
+ header "$first_name" "$last_name"
+ # restof your program goes here
+}
+
+# Call the main function
+main
+
+# Function to perform arithmetic operations
+perform_operations() {
+ num1=$1
+ num2=$2
+
+# Addition
+ sum=$((num1 + num2))
+ echo "Addition: $num1 + $num2 = $sum"
+
+# Subtraction
+ diff=$((num1 - num2))
+ echo "Subtraction: $num1 - $num2 = $diff"
+
+# Multiplication
+ product=$((num1 * num2))
+ echo "Multiplication: $num1 * $num2 = $product"
+
+# Division
+ if [ $num2 -ne 0 ]; then
+ quotient=$((num1 / num2))
+ echo "Division: $num1 / $num2 = $quotient"
+ else
+ echo "Division: Cannot divide by zero."
+ fi
+
+# Compare numbers
+ if [ $num1 -gt $num2 ]; then
+ echo "$num1 is larger than $num2."
+ smaller=$num2
+ larger=$num1
+ elif [ $num1 -lt $num2 ]; then
+ echo "$num2 is larger than $num1."
+ smaller=$num1
+ larger=$num2
+ else
+ echo "Both numbers are equal."
+ smaller=$num1
+ larger=$num2
+ fi
+
+# Display random number between smaller and larger
+ random=$((RANDOM % (larger - smaller + 1) + smaller))
+ echo "Random number between $smaller and $larger: $random"
+}
+
+# Main program function
+main() {
+while true; do
+ read -p "Enter the first number: " number1
+ read -p "Enter the second number: " number2
+ echo
+ perform_operations "$number1" "$number2"
+
+ read -p "Do you want to perform the operations again? (yes/no): " choice
+ echo
+
+ if [ "$choice" != "yes" ]; then
+ break
+ fi
+ done
+
+ echo "Moving on to the next part..."
+# Continue with the next part of the script
+}
+
+# Call the main function
+main
+
+# Function to display the multiplication table
+display_multiplication_table() {
+ number=$1
+
+ echo "Multiplication Table for $number:"
+ for ((i = 1; i <= 10; i++)); do
+ result=$((number * i))
+ echo "$i x $number = $result"
+ done
+ echo
+}
+
+# Main program function
+main() {
+while true; do
+ read -p "Enter a number between 1 and 10 (inclusive): " number
+ echo
+
+ if ((number >= 1 && number <= 10)); then
+ display_multiplication_table "$number"
+ else
+ echo "Invalid input! Please enter a number between 1 and 10 (inclusive)."
+ echo
+ continue
+ fi
+
+ read -p "Do you want to try another number? (yes/no): " choice
+ echo
+
+ if [ "$choice" != "yes" ]; then
+ break
+ fi
+ done
+
+ echo "Moving on to the next part..."
+# Continue with the next part of the script
+}
+# Call the main function
+main
+
+# Function to generate the Fibonacci sequence
+
+generate_fibonacci_sequence(){
+ num1=0
+ num2=1
+
+
+ echo "Fibonacci sequence:"
+ while [ $num2 -lt $1 ]; do
+ echo -n "$num1 "
+ temp=$((num1 + num2))
+ num1=$num2
+ num2=$temp
+ done
+ echo
+}
+
+# Main program function
+main(){
+ while true; do
+ random_number=$((RANDOM % 100 + 1))
+ generate_fibonacci_sequence "$random_number"
+
+read -p "Guess the final number in the Fibonacci sequence:" guess
+echo
+
+if [ $guess -eq $num1 ]; then
+echo "Congratulations! You guessed it correctly."
+else
+echo "Oops! Wrong guess."
+fi
+
+ read -p "Do you want to play again? (yes/no): " choice
+ echo
+
+ if [ "$choice" != "yes" ]; then
+  break
+ fi
+ done
+
+ echo "Moving on to the next part..."
+# Continue with the next part of the script
+}
+
+# Call the main function
+main
+
+
+# Function to check if a sentence contains specific words
+check_words_in_sentence() {
+ sentence=$1
+
+ if [[ $sentence == *"cat"* ]]; then
+ echo "The word 'cat' was found in the sentence."
+ fi
+
+ if [[ $sentence == *"dog"* ]]; then
+ echo "The word 'dog' was found in the sentence."
+ fi
+
+ if [[ $sentence == *"bird"* ]]; then
+ echo "The word 'bird' was found in the sentence."
+ fi
+
+ if [[ $sentence != *"cat"* && $sentence != *"dog"* && $sentence != *"bird"* ]]; then
+ echo "None of the words ('cat', 'dog', 'bird') were found in the sentence."
+ fi
+}
+
+
+# Main program function
+main() {
+ read -p "Enter a sentence: " input_sentence
+ echo
+
+ check_words_in_sentence "$input_sentence"
+}
+
+# Call the main function
+main
+
+# Function to generate a random number between 1 and 10
+generate_random_number() {
+ echo $((RANDOM % 10 + 1))
+}
+
+# Main program function
+main() {
+while true; do
+ read -p "Guess the number between 1 and 10: " guess
+ echo
+
+ until [ $guess -eq random_number ]; do
+ read -p "Wrong guess! Try again: " guess
+ echo
+ done
+ echo "Congratulations! You guessed it correctly."
+
+ read -p "Do you want to play again? (yes/no): " choice
+ echo
+
+ if [ "$choice" != "yes" ]; then
+ break
+ fi
+ done
+
+ echo "End of the program."
+}
+
+# Call the main function
+main
